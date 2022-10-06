@@ -15,6 +15,16 @@
     #email {
       color: darkgrey;
     }
+    .contact-action {
+      position: relative;
+      img {
+        cursor: pointer;
+        position: absolute;
+        bottom: 1px;
+        right: 15px;
+        width: 35px;
+      }
+    }
   }
 
 }
