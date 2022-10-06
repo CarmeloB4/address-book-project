@@ -1,0 +1,19 @@
+.address-page {
+  height: 100vh;
+  width: 100vw;
+
+  h1 {
+    margin: 0;
+  }
+
+  .contacts-list {
+    border-right: 2px solid grey;
+    min-width: 30%;
+
+    hr {
+      height: 5px;
+      width: 100%;
+      color: grey;
+    }
+  }
+}
