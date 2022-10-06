@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+// Add Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Import landing layout style
+@import "assets/scss/layouts/landing";
