@@ -19,6 +19,7 @@ export class AddressService {
 
   //get all contacts
   public getAll(): Observable<Contact[]> {
+    console.log('miao');
     return of(this.contacts);
   }
 

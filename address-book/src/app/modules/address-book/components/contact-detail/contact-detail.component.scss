@@ -10,13 +10,20 @@
   }
 
   .detail-action {
-    width: 5rem;
-    text-align: center;
-    background-color: #0A2388;
 
     button {
+      text-align: center;
+
+      width: 5rem;
       color: #fff;
-      //toggle click style
+    }
+
+    .btn {
+      background-color: #0A2388;
+    }
+
+    .btn-save {
+      background-color: darkgreen;
     }
   }
 }

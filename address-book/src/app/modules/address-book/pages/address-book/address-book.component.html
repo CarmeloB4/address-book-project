@@ -5,10 +5,12 @@
     </div>
     <hr />
     <div class="list d-flex flex-column align-items-start w-100">
-      <app-contact-card class="w-100"></app-contact-card>
+      <ng-container *ngFor="let contact of contacts">
+        <app-contact-card class="w-100" [contact]="contact" (selectedContact)="setSelectedContact($event)" (deleteContact)="deleteContact($event)"></app-contact-card>
+      </ng-container>
     </div>
   </div>
   <div class="contact-detail">
-    <app-address-detail></app-address-detail>
+    <app-contact-detail></app-contact-detail>
   </div>
 </div>
