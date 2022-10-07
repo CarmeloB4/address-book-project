@@ -1,7 +1,9 @@
+@import "src/assets/scss/variables";
+
 .contact-card {
   height: 5rem;
   padding: 0.1rem;
-  border-bottom: 2px solid darkgrey;
+  border-bottom: 2px solid $border;
 
   h4,p {
     margin: 0;
