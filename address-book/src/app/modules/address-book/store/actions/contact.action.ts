@@ -23,12 +23,27 @@ export const updateContact = createAction(
   props<{ contact: Contact }>()
 );
 
+export const updateContactSuccess = createAction(
+  '[Address-Book] Update contact Success',
+  props<{ contact: Contact | null }>()
+);
+
 export const addContact = createAction(
   '[Address-Book] Add Contact',
   props<{ contact: Contact }>()
 );
 
+export const addContactSuccess = createAction(
+  '[Address-Book] Add Contact Success',
+  props<{ contact: Contact }>()
+);
+
 export const deleteContact = createAction(
   '[Address-Book] Delete Contact',
+  props<{ id: number }>()
+);
+
+export const deleteContactSuccess = createAction(
+  '[Address-Book] Delete Contact Success',
   props<{ id: number }>()
 );

@@ -11,8 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./address-book.component.scss'],
 })
 export class AddressBookComponent implements OnInit {
-  public contacts!: Contact[] | null;
-  public selectedContact!: Contact;
+  public contacts!: Contact[] | undefined;
+  public selectedContact!: Contact | null;
   public contactForm = this.fb.group({
     id: null,
     firstname: this.fb.control('', [Validators.required]),
@@ -42,11 +42,11 @@ export class AddressBookComponent implements OnInit {
 
   private setContactForm(): void {
     this.contactForm.patchValue({
-      id: this.selectedContact.id,
-      firstname: this.selectedContact.firstname,
-      lastname: this.selectedContact.lastname,
-      telephone: this.selectedContact.telephone,
-      email: this.selectedContact.email,
+      id: this.selectedContact?.id,
+      firstname: this.selectedContact?.firstname,
+      lastname: this.selectedContact?.lastname,
+      telephone: this.selectedContact?.telephone,
+      email: this.selectedContact?.email,
     });
 
     this.contactForm.disable();
@@ -58,7 +58,7 @@ export class AddressBookComponent implements OnInit {
   }
 
   public deleteContact(id: number): void {
-    console.log(id);
+    this.contactFacade.deleteContact(id);
   }
 
   public enableEditContact(): void {
@@ -66,6 +66,28 @@ export class AddressBookComponent implements OnInit {
   }
 
   public saveContact(contact: FormGroup): void {
-    console.log(contact.value);
+    if (this.contacts && this.contacts.length + 1 !== contact.value.id) {
+      this.contactFacade.updateContact(contact.value);
+    } else {
+      this.contactFacade.addContact(contact.value);
+    }
+
+    this.selectedContact = null;
+  }
+
+  public addContact(): void {
+    let newContact: Contact;
+
+    if (this.contacts) {
+      newContact = {
+        id: this.contacts?.length + 1,
+        firstname: '',
+        lastname: '',
+        telephone: '',
+        email: '',
+      };
+      this.selectedContact = newContact;
+      this.setContactForm();
+    }
   }
 }

@@ -19,7 +19,6 @@ export class AddressService {
 
   //get all contacts
   public getAll(): Observable<Contact[]> {
-    console.log('miao');
     return of(this.contacts);
   }
 
@@ -36,8 +35,11 @@ export class AddressService {
   //update contact
   public update(contact: Contact): Observable<Contact | null> {
     const index = this.getArrayIndexById(contact.id);
+    console.log('index');
     if (typeof index === 'number') {
-      return of((this.contacts[index] = contact));
+      console.log('hello');
+      const payload = [...this.contacts];
+      return of((payload[index] = contact));
     }
 
     return of(null);
@@ -45,7 +47,7 @@ export class AddressService {
 
   //add contact
   public add(contact: Contact): void {
-    this.contacts.push(contact);
+    this.contacts = [...this.contacts, contact];
   }
 
   //delete contact
