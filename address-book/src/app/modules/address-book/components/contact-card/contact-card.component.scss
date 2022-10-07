@@ -1,0 +1,30 @@
+.contact-card {
+  height: 5rem;
+  padding: 0.1rem;
+  border-bottom: 2px solid darkgrey;
+
+  h4,p {
+    margin: 0;
+  }
+
+  .contact-header,.contact-body {
+    margin-left: 1rem;
+  }
+
+  .contact-body {
+    #email {
+      color: darkgrey;
+    }
+    .contact-action {
+      position: relative;
+      img {
+        cursor: pointer;
+        position: absolute;
+        bottom: 1px;
+        right: 15px;
+        width: 35px;
+      }
+    }
+  }
+
+}
