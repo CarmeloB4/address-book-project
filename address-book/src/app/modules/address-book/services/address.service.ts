@@ -7,7 +7,8 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class AddressService {
-  private contacts: Contact[] = CONTACTS;
+  // make public only for mock test
+  public contacts: Contact[] = CONTACTS;
 
   constructor() {}
 
@@ -35,9 +36,7 @@ export class AddressService {
   //update contact
   public update(contact: Contact): Observable<Contact | null> {
     const index = this.getArrayIndexById(contact.id);
-    console.log('index');
     if (typeof index === 'number') {
-      console.log('hello');
       const payload = [...this.contacts];
       return of((payload[index] = contact));
     }
