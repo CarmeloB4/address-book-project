@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContactFacade } from '../../store/facades/contact.facade';
 import { Subject } from 'rxjs';
 import { Contact } from '../../../../shared/models/contact.model';
@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './address-book.component.html',
   styleUrls: ['./address-book.component.scss'],
 })
-export class AddressBookComponent implements OnInit {
+export class AddressBookComponent implements OnDestroy {
   public contacts!: Contact[] | undefined;
   public selectedContact!: Contact | null;
   public contactForm = this.fb.group({
@@ -31,25 +31,8 @@ export class AddressBookComponent implements OnInit {
     this.setContactsData();
   }
 
-  ngOnInit(): void {}
-
-  private setContactsData(): void {
-    this.contactFacade
-      .contacts$()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((response) => (this.contacts = response.contacts));
-  }
-
-  private setContactForm(): void {
-    this.contactForm.patchValue({
-      id: this.selectedContact?.id,
-      firstname: this.selectedContact?.firstname,
-      lastname: this.selectedContact?.lastname,
-      telephone: this.selectedContact?.telephone,
-      email: this.selectedContact?.email,
-    });
-
-    this.contactForm.disable();
+  ngOnDestroy() {
+    this.destroy$.complete();
   }
 
   public setSelectedContact(contact: Contact): void {
@@ -89,5 +72,24 @@ export class AddressBookComponent implements OnInit {
       this.selectedContact = newContact;
       this.setContactForm();
     }
+  }
+
+  private setContactsData(): void {
+    this.contactFacade
+      .contacts$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((response) => (this.contacts = response.contacts));
+  }
+
+  private setContactForm(): void {
+    this.contactForm.patchValue({
+      id: this.selectedContact?.id,
+      firstname: this.selectedContact?.firstname,
+      lastname: this.selectedContact?.lastname,
+      telephone: this.selectedContact?.telephone,
+      email: this.selectedContact?.email,
+    });
+
+    this.contactForm.disable();
   }
 }

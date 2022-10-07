@@ -4,7 +4,7 @@ import { AddressBookComponent } from './pages/address-book/address-book.componen
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
 import { AddressRoutingModule } from './address-routing.module';
 import { ContactCardComponent } from './components/contact-card/contact-card.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactDetailComponent,
     ContactCardComponent,
   ],
-  imports: [CommonModule, AddressRoutingModule, ReactiveFormsModule],
+  imports: [CommonModule, AddressRoutingModule, SharedModule],
 })
 export class AddressBookModule {}
