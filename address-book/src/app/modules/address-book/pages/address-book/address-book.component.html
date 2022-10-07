@@ -11,6 +11,6 @@
     </div>
   </div>
   <div class="contact-detail">
-    <app-contact-detail></app-contact-detail>
+    <app-contact-detail [contactInfo]="contactForm" (editContact)="enableEditContact()" (saveContact)="saveContact($event)"></app-contact-detail>
   </div>
 </div>

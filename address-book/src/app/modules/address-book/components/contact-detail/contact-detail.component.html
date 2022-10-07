@@ -2,25 +2,26 @@
   <div class="detail-header">
     <h1>Contact detail</h1>
   </div>
-  <div class="detail-body d-flex flex-column">
+  <div class="detail-body d-flex flex-column" [formGroup]="contactInfo">
     <label for="firstname" class="d-flex flex-column">
       <span>Firstname</span>
-      <input type="text" id="firstname">
+      <input type="text" id="firstname" formControlName="firstname">
     </label>
     <label for="lastname" class="d-flex flex-column">
       <span>Lastname</span>
-      <input type="text" id="lastname">
+      <input type="text" id="lastname" formControlName="lastname">
+    </label>
+    <label for="telephone" class="d-flex flex-column">
+      <span>Telephone</span>
+      <input type="text" id="telephone" formControlName="telephone">
     </label>
     <label for="email" class="d-flex flex-column">
       <span>Email</span>
-      <input type="text" id="email">
+      <input type="email" id="email" formControlName="email">
     </label>
-    <h4>Mario Rossi</h4>
-    <p>3287574789</p>
-    <p>mariorossi@gmail</p>
   </div>
   <div class="detail-action w-100 d-flex justify-content-between">
-    <button class="btn">Edit</button>
-    <button class="btn btn-save">Save</button>
+    <button class="btn" (click)="editContact.emit()">Edit</button>
+    <button class="btn btn-save" (click)="saveContact.emit(contactInfo)" [disabled]="!contactInfo.valid">Save</button>
   </div>
 </div>
