@@ -5,10 +5,18 @@
     </div>
     <hr />
     <div class="list d-flex flex-column align-items-start w-100">
-      <app-contact-card class="w-100"></app-contact-card>
+      <ng-container *ngFor="let contact of contacts">
+        <app-contact-card class="w-100" [contact]="contact" (selectedContact)="setSelectedContact($event)" (deleteContact)="deleteContact($event)"></app-contact-card>
+      </ng-container>
+      <button class="btn btn-primary mt-3 ms-2" (click)="addContact()">Add Contact</button>
     </div>
   </div>
   <div class="contact-detail">
-    <app-address-detail></app-address-detail>
+    <ng-container *ngIf="selectedContact; else noContactSelected">
+      <app-contact-detail [contactInfo]="contactForm" (editContact)="enableEditContact()" (saveContact)="saveContact($event)"></app-contact-detail>
+    </ng-container>
+    <ng-template #noContactSelected>
+      <h4>No contact selected</h4>
+    </ng-template>
   </div>
 </div>

@@ -1,0 +1,31 @@
+@import "src/assets/scss/variables";
+
+.contact-detail {
+  width: 60%;
+  height: 400px;
+  padding: 1rem;
+  border: 2px solid darkgrey;
+  border-radius: 5%;
+
+  .detail-header {
+    color: $primary-text-color;
+  }
+
+  .detail-action {
+
+    button {
+      text-align: center;
+
+      width: 5rem;
+      color: #fff;
+    }
+
+    .btn {
+      background-color: $primary-color;
+    }
+
+    .btn-save {
+      background-color: darkgreen;
+    }
+  }
+}
