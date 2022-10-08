@@ -1,6 +1,6 @@
 # Address book project 📒
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2. <br>
-I have deployed the project on Vercel, this is the live link: <br>
+I have deployed the project on Vercel, this is the live link: https://address-book-project-opal.vercel.app/ <br>
 The project have a CI/CD system on deploy.
 
 ## Development server
