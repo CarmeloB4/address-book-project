@@ -8,11 +8,11 @@ import {
 } from '../actions/contact.action';
 
 export interface ContactState {
-  contacts: Contact[] | undefined;
+  contacts: Contact[] | null;
 }
 
 export const initialState: ContactState = {
-  contacts: undefined,
+  contacts: null,
 };
 
 export const contactReducer = createReducer(
@@ -22,14 +22,14 @@ export const contactReducer = createReducer(
     ...state,
     contacts: state.contacts?.map((c) =>
       c.id === contact?.id ? { ...contact } : c
-    ),
+    ) as Contact[],
   })),
   on(addContactSuccess, (state, { contact }) => ({
     ...state,
-    contacts: state.contacts?.concat(contact),
+    contacts: state.contacts?.concat(contact) as Contact[],
   })),
   on(deleteContactSuccess, (state, { id }) => ({
     ...state,
-    contacts: state.contacts?.filter((c) => c.id !== id),
+    contacts: state.contacts?.filter((c) => c.id !== id) as Contact[],
   }))
 );

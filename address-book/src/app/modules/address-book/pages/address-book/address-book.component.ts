@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./address-book.component.scss'],
 })
 export class AddressBookComponent implements OnDestroy {
-  public contacts!: Contact[] | undefined;
+  public contacts!: Contact[] | null;
   public selectedContact!: Contact | null;
   public contactForm = this.fb.group({
     id: null,

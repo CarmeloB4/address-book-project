@@ -1,6 +1,6 @@
 <div class="contact-card d-flex flex-column align-items-start w-100" (click)="selectedContact.emit(contact)">
   <div class="contact-header">
-    <h4>{{fullname(contact.firstname, contact.lastname)}}</h4>
+    <h4>{{contact.firstname | fullname: contact.lastname}}</h4>
   </div>
   <div class="contact-body d-flex flex-column w-100">
     <p>{{contact.telephone}}</p>
